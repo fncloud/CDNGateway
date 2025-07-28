@@ -31,10 +31,17 @@ export default {
 			return fetch(网站图标);
 		} else {
 			// 先测速，不加载背景图片
-			let img = 'https://raw.cmliussss.com/keqing1080p.jpg'; // 默认图片
-			if (env.IMG) {
-				const imgs = await ADD(env.IMG);
-				img = imgs[Math.floor(Math.random() * imgs.length)];
+			let bgImgs = [
+			'https://raw.cmliussss.com/keqing1080p.jpg',
+			'https://pic.imgdb.cn/item/66f6c978f21886ccc06c2315.jpg',
+			'https://pic.imgdb.cn/item/66f6c978f21886ccc06c22bc.jpg',
+			'https://pic.imgdb.cn/item/66f6c978f21886ccc06c2337.jpg'
+		];
+		if (env.IMG) {
+			bgImgs = await ADD(env.IMG);
+		
+		const imgIndex = Math.floor(Math.random() * bgImgs.length);
+		const img = bgImgs[imgIndex];
 			}
 
 			// 生成将 urls 数组传递给前端 JavaScript 的 HTML
@@ -254,7 +261,7 @@ export default {
 				</style>
 			</head>
 			<body>
-				<a href="https://github.com/cmliu/Blog-CDN-Gateway" target="_blank" class="github-corner" aria-label="View source on Github">
+				<a href="https://www.fntaowu.com" target="_blank" class="github-corner" aria-label="View source on Github">
 					<svg viewBox="0 0 250 250" aria-hidden="true">
 						<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
 						<path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
@@ -267,8 +274,10 @@ export default {
 					</div>
 					<h1>${网页标题}</h1>
 					<ul class="description" id="urls"></ul>
+					<!-- 新增：urls跳转按钮 -->
+					<div id="urls-btns-container" style="width:100%;text-align:center;margin:10px 0;"></div>
 					<div class="beian-info" style="text-align: center; font-size: 13px;">
-						${网络备案}
+					<h3>✅网页无响应时 点击按钮 跳转访问</h3>
 					</div>
 				</div>
 				<script>
@@ -374,7 +383,22 @@ export default {
 					}
 			
 					window.onload = runTests;
-				</script>
+					// 新增：生成urls跳转按钮
+					function renderUrlsBtns() {
+					  const btnsContainer = document.getElementById('urls-btns-container');
+					  btnsContainer.innerHTML = '';
+					  urls.forEach((url, idx) => {
+					    const [jumpUrl, name] = url.split('#');
+					    const btn = document.createElement('button');
+					    btn.textContent = \`点击跳转 \${name || jumpUrl}\`;
+					    btn.style = 'margin:4px 6px 4px 0;padding:6px 16px;border-radius:8px;border:none;background:#22c55e;color:#fff;cursor:pointer;font-weight:600;';
+					    btn.onclick = () => window.open(jumpUrl, '_blank');
+					    btnsContainer.appendChild(btn);
+					  });
+					}
+					renderUrlsBtns();
+				<\/script>
+				<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
 			</body>
 			</html>
 			`;
