@@ -39,19 +39,17 @@ export default {
 		];
 		if (env.IMG) {
 			bgImgs = await ADD(env.IMG);
-		
+		}
 		const imgIndex = Math.floor(Math.random() * bgImgs.length);
 		const img = bgImgs[imgIndex];
-			}
 
-			// 生成将 urls 数组传递给前端 JavaScript 的 HTML
-			const html = `
+      const html = `
 			<!DOCTYPE html>
 			<html lang="zh-CN">
 			<head>
 				<meta charset="UTF-8">
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<title>${站点名称} - ${网页标题}</title>
+				<title>${\u7AD9\u70B9\u540D\u79F0} - ${\u7F51\u9875\u6807\u9898}</title>
 				<style>
 					* {
 						margin: 0;
