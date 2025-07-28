@@ -1,9 +1,9 @@
 let urls = [
-	'https://blog.cmliussss.com#Cloudflare CDN',
-	'https://fastly.blog.cmliussss.com#Fastly CDN',
-	'https://gcore.blog.cmliussss.com#Gcore CDN',
-	'https://vercel.blog.cmliussss.com#Vercel CDN',
-	'https://netlify.blog.cmliussss.com#Netlify CDN'
+	'https://qq.fnyun.co#qq.fnyun.co',
+	'https://cloud.fnyun.co#cloud.fnyun.co',
+	'https://fncloud.fnyun.vip#fncloud.fnyun.vip',
+	'https://cloud.fntao5.cn#cloud.fntao5.cn',
+	'https://cloud.fncloud.top/#cloud.fncloud.top'
 ];
 
 export default {
@@ -16,11 +16,11 @@ export default {
 		if (env.URL) urls = await ADD(env.URL);
 		
 		const ads = env.ADS || 'google.com, pub-9350003957494520, DIRECT, f08c47fec0942fa0';
-		const 网站图标 = env.ICO || 'https://raw.cmliussss.com/favicon.ico';
-		const 网站头像 = env.PNG || 'https://raw.cmliussss.com/IMG_0038.png';
-		const 网络备案 = env.BEIAN || `<a href='https://icp.gov.moe/'>萌ICP备-20070707号</a>`;
-		const 网页标题 = env.TITLE || 'BlogCDN 智能访问网关';
-		const 站点名称 = env.NAME || 'CMLiussss Blog';
+		const 网站图标 = env.ICO || 'https://tencentcdna.production.link3.cc/user_create_images/link3_1750703159775/multiple_images/1751906091715';
+		const 网站头像 = env.PNG || 'https://tencentcdna.production.link3.cc/user_create_images/link3_1750703159775/multiple_images/1751906091715';
+		const 网络备案 = env.BEIAN || `<a href='https://www.link3.cc/fnyun'`;
+		const 网页标题 = env.TITLE || 'Fn Cloud蜂鸟云νPN订阅🚀';
+		const 站点名称 = env.NAME || '蜂鸟云智能访问';
 		if (url.pathname.toLowerCase() == '/ads.txt') {
 			return new Response(ads, {
 				headers: {
